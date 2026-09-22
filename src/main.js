@@ -29,6 +29,14 @@ function inflate(raw) {
 }
 
 async function loadCatalog() {
+  const el = document.getElementById('catalog-data');
+  if (el && el.textContent.trim()) {
+    try {
+      const packed = JSON.parse(el.textContent);
+      const concepts = inflate(packed);
+      if (concepts.length) return { catalog: packed, concepts };
+    } catch (_) {}
+  }
   const tryFetch = async (urls) => {
     for (const u of urls) {
       try {
@@ -42,7 +50,14 @@ async function loadCatalog() {
     './public/catalog.json', '/catalog.json', './catalog.json',
     './public/concepts.json', '/concepts.json', './concepts.json',
   ]);
-  const concepts = inflate(packed);
+  let concepts = inflate(packed);
+  if (concepts.length < 193) {
+    const parts = await Promise.all([
+      tryFetch(['./public/catalog.1.json', '/catalog.1.json', './catalog.1.json']),
+      tryFetch(['./public/catalog.2.json', '/catalog.2.json', './catalog.2.json']),
+    ]);
+    concepts = [...inflate(parts[0]), ...inflate(parts[1])];
+  }
   return { catalog: packed || { concepts }, concepts };
 }
 const { concepts } = await loadCatalog();
