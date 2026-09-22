@@ -8,5 +8,10 @@
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
       ]
     }
+  ],
+  "rewrites": [
+    { "source": "/catalog.json", "destination": "/public/catalog.json" },
+    { "source": "/concepts.json", "destination": "/public/concepts.json" },
+    { "source": "/recordings/:file", "destination": "/public/recordings/:file" }
   ]
 }

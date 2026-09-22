@@ -1,10 +1,51 @@
 import * as THREE from 'three';
 
 const $ = (id) => document.getElementById(id);
-const catalog = await fetch('./public/concepts.json')
-  .then((r) => { if (!r.ok) throw new Error('miss'); return r.json(); })
-  .catch(() => fetch('/public/concepts.json').then((r) => r.json()));
-const concepts = catalog.concepts || [];
+function inflate(raw) {
+  if (!raw) return [];
+  if (Array.isArray(raw.concepts)) return raw.concepts;
+  if (Array.isArray(raw)) return raw;
+  if (!Array.isArray(raw.rows)) return [];
+  const d = raw.defaults || {};
+  return raw.rows.map((r) => {
+    const id = r[0];
+    const pad = String(id).padStart(3, '0');
+    return {
+      id,
+      urn: `urn:titanu:21d:T21-${pad}`,
+      name: r[1],
+      why: r[2],
+      form: raw.forms[r[3]],
+      status: raw.statuses[r[4]],
+      gate: raw.gates[r[5]],
+      companyCandidate: !!r[6],
+      estimate: { team: r[7], soloFactory: r[8], unit: raw.units[r[9]], label: d.label },
+      publicSurface: d.publicSurface,
+      protected: d.protected,
+      recording: `recordings/T21-${pad}.webm`,
+      reconstructed: !!r[10],
+    };
+  });
+}
+
+async function loadCatalog() {
+  const tryFetch = async (urls) => {
+    for (const u of urls) {
+      try {
+        const r = await fetch(u);
+        if (r.ok) return r.json();
+      } catch (_) {}
+    }
+    return null;
+  };
+  const packed = await tryFetch([
+    './public/catalog.json', '/catalog.json', './catalog.json',
+    './public/concepts.json', '/concepts.json', './concepts.json',
+  ]);
+  const concepts = inflate(packed);
+  return { catalog: packed || { concepts }, concepts };
+}
+const { concepts } = await loadCatalog();
 
 function stats() {
   const n = concepts.length;
@@ -39,16 +80,28 @@ function openConcept(c) {
   const v = $('tape');
   v.hidden = true;
   const url = `./public/${c.recording}`;
+  const url2 = `/${c.recording}`;
   fetch(url, { method: 'HEAD' }).then((res) => {
     if (res.ok) { v.src = url; v.hidden = false; }
+    else {
+      return fetch(url2, { method: 'HEAD' }).then((r2) => {
+        if (r2.ok) { v.src = url2; v.hidden = false; }
+      });
+    }
   }).catch(() => {});
 }
 
-$('close').onclick = () => { $('inspector').hidden = true; $('hero').hidden = false; };
+$('close').onclick = () => {
+  $('inspector').hidden = true;
+  $('hero').hidden = false;
+};
 
 function renderTable(filter = '') {
   const q = filter.trim().toLowerCase();
-  const rows = concepts.filter((c) => !q || `${c.id} ${c.name} ${c.form} ${c.status} ${c.gate}`.toLowerCase().includes(q));
+  const rows = concepts.filter((c) => {
+    if (!q) return true;
+    return `${c.id} ${c.name} ${c.form} ${c.status} ${c.gate}`.toLowerCase().includes(q);
+  });
   $('rows').innerHTML = rows.map((c) => `
     <tr data-id="${c.id}">
       <td>T21-${String(c.id).padStart(3,'0')}</td>
@@ -89,7 +142,9 @@ document.querySelectorAll('nav button').forEach((b) => {
   };
 });
 
-stats(); renderTable(); renderTapes();
+stats();
+renderTable();
+renderTapes();
 
 const canvas = $('void');
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
@@ -97,6 +152,7 @@ renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(55, 1, 0.1, 200);
 camera.position.set(0, 0, 46);
+
 const group = new THREE.Group();
 scene.add(group);
 const geo = new THREE.SphereGeometry(0.12, 8, 8);
@@ -104,13 +160,14 @@ concepts.forEach((c, i) => {
   const hue = c.form === 'Research / Hardware' ? 0.08 : c.status === 'Selected' ? 0.5 : c.companyCandidate ? 0.55 : 0.58;
   const mat = new THREE.MeshBasicMaterial({ color: new THREE.Color().setHSL(hue, 0.9, c.status === 'Selected' ? 0.7 : 0.55) });
   const m = new THREE.Mesh(geo, mat);
-  const phi = Math.acos(1 - (2 * (i + 0.5)) / concepts.length);
+  const phi = Math.acos(1 - (2 * (i + 0.5)) / Math.max(concepts.length, 1));
   const theta = Math.PI * (1 + Math.sqrt(5)) * i;
   const r = 16 + (c.form === 'Standalone Company' ? 2 : 0);
   m.position.setFromSphericalCoords(r, phi, theta);
   m.userData = c;
   group.add(m);
 });
+
 const ray = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 canvas.addEventListener('pointerdown', (ev) => {
@@ -121,12 +178,14 @@ canvas.addEventListener('pointerdown', (ev) => {
   const hit = ray.intersectObjects(group.children)[0];
   if (hit) openConcept(hit.object.userData);
 });
+
 function resize() {
   const w = innerWidth; const h = innerHeight;
   renderer.setSize(w, h, false);
   camera.aspect = w / h; camera.updateProjectionMatrix();
 }
 addEventListener('resize', resize); resize();
+
 let t = 0;
 function frame() {
   t += 0.0025;
