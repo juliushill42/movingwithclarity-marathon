@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 
 const $ = (id) => document.getElementById(id);
+
 function inflate(raw) {
   if (!raw) return [];
   if (Array.isArray(raw.concepts)) return raw.concepts;
@@ -38,42 +39,48 @@ async function loadCatalog() {
     }
     return null;
   };
-  const el = document.getElementById('catalog-data');
-  if (el && el.textContent.trim()) {
-    try {
-      const packed = JSON.parse(el.textContent);
-      const concepts = inflate(packed);
-      if (concepts.length) return { catalog: packed, concepts };
-    } catch (_) {}
-  }
-  const meta = await tryFetch(['/catalog.meta.json', './catalog.meta.json', './public/catalog.meta.json']);
+  const meta = await tryFetch(['/catalog.meta.json', './catalog.meta.json']);
   const parts = await Promise.all([1, 2, 3, 4].map((i) =>
-    tryFetch([`/rows.${i}.json`, `./rows.${i}.json`, `./public/rows.${i}.json`])
+    tryFetch([`/rows.${i}.json`, `./rows.${i}.json`])
   ));
   const rows = parts.flatMap((p) => (Array.isArray(p) ? p : []));
-  const concepts = (meta && rows.length) ? inflate({ ...meta, rows }) : [];
-  return { catalog: meta || { concepts }, concepts };
+  return (meta && rows.length) ? inflate({ ...meta, rows }) : [];
 }
-const { concepts } = await loadCatalog();
+
+const concepts = await loadCatalog();
+
+const start = Date.parse('2026-09-22T00:00:00-05:00');
+const day = Math.min(21, Math.max(1, Math.floor((Date.now() - start) / 86400000) + 1));
+if ($('dayn')) $('dayn').textContent = String(day);
 
 function stats() {
   const n = concepts.length;
-  const selected = concepts.filter((c) => c.status === 'Selected').length;
-  const company = concepts.filter((c) => c.companyCandidate).length;
-  const hw = concepts.filter((c) => c.form === 'Research / Hardware').length;
   $('stats').innerHTML = [
     ['Specified', n],
-    ['Selected now', selected],
-    ['Company-shaped', company],
-    ['Hardware/research', hw],
+    ['Selected', concepts.filter((c) => c.status === 'Selected').length],
+    ['Company-shaped', concepts.filter((c) => c.companyCandidate).length],
+    ['Hardware/research', concepts.filter((c) => c.form === 'Research / Hardware').length],
     ['Patents filed', '0'],
-    ['Operator', '1'],
+    ['Operators', '1'],
+    ['Day', `${day}/21`],
+    ['Tapes on disk', 'drop-in'],
   ].map(([k, v]) => `<div><b>${v}</b>${k}</div>`).join('');
 }
 
+function show(id) {
+  ['home', 'inspector', 'ledger', 'pose', 'kill', 'ip', 'tape'].forEach((k) => {
+    const el = $(k);
+    if (el) el.hidden = k !== id;
+  });
+  document.querySelectorAll('nav button').forEach((b) => {
+    const key = id === 'inspector' ? 'home' : id;
+    b.classList.toggle('on', b.dataset.go === key);
+  });
+}
+
 function openConcept(c) {
-  $('hero').hidden = true;
-  $('inspector').hidden = false;
+  show('inspector');
+  $('home').hidden = true;
   $('urn').textContent = c.urn;
   $('iname').textContent = `T21-${String(c.id).padStart(3, '0')} · ${c.name}`;
   $('iwhy').textContent = c.why;
@@ -86,32 +93,19 @@ function openConcept(c) {
   $('ipriv').textContent = c.protected;
   $('igate').textContent = `${c.gate} · drafts unfiled · do not say patented`;
   $('tpath').textContent = c.recording;
-  const v = $('tape');
+  const v = $('tapev');
   v.hidden = true;
-  const url = `/${c.recording}`;
-  const url2 = `./${c.recording}`;
-  fetch(url, { method: 'HEAD' }).then((res) => {
-    if (res.ok) { v.src = url; v.hidden = false; }
-    else {
-      return fetch(url2, { method: 'HEAD' }).then((r2) => {
-        if (r2.ok) { v.src = url2; v.hidden = false; }
-      });
-    }
+  fetch('/' + c.recording, { method: 'HEAD' }).then((res) => {
+    if (res.ok) { v.src = '/' + c.recording; v.hidden = false; }
   }).catch(() => {});
 }
 
-$('close').onclick = () => {
-  $('inspector').hidden = true;
-  $('hero').hidden = false;
-};
+$('close').onclick = () => show('home');
 
 function renderTable(filter = '') {
   const q = filter.trim().toLowerCase();
-  const rows = concepts.filter((c) => {
-    if (!q) return true;
-    return `${c.id} ${c.name} ${c.form} ${c.status} ${c.gate}`.toLowerCase().includes(q);
-  });
-  $('rows').innerHTML = rows.map((c) => `
+  const list = concepts.filter((c) => !q || `${c.id} ${c.name} ${c.form} ${c.status} ${c.gate}`.toLowerCase().includes(q));
+  $('rows').innerHTML = list.map((c) => `
     <tr data-id="${c.id}">
       <td>T21-${String(c.id).padStart(3,'0')}</td>
       <td>${c.name}</td>
@@ -137,18 +131,11 @@ function renderTapes() {
       <div>T21-${String(c.id).padStart(3,'0')}</div>
       <strong>${c.name}</strong>
       <p class="muted">${c.recording}</p>
-    </article>`).join('') + `<p class="muted">Remaining ${Math.max(0, concepts.length - 24)} slots use the same filename rule.</p>`;
+    </article>`).join('') + `<p class="muted">Remaining ${Math.max(0, concepts.length - 24)} slots use the same filename rule. No file = empty slot.</p>`;
 }
 
 document.querySelectorAll('nav button').forEach((b) => {
-  b.onclick = () => {
-    const go = b.dataset.go;
-    ['ledger', 'pose', 'ip', 'tape'].forEach((id) => { $(id).hidden = go !== id; });
-    if (go === 'constellation') {
-      ['ledger', 'pose', 'ip', 'tape', 'inspector'].forEach((id) => { $(id).hidden = true; });
-      $('hero').hidden = false;
-    }
-  };
+  b.onclick = () => show(b.dataset.go);
 });
 
 stats();
@@ -161,22 +148,20 @@ renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(55, 1, 0.1, 200);
 camera.position.set(0, 0, 46);
-
 const group = new THREE.Group();
 scene.add(group);
-const geo = new THREE.SphereGeometry(0.12, 8, 8);
+const geo = new THREE.SphereGeometry(0.14, 10, 10);
 concepts.forEach((c, i) => {
   const hue = c.form === 'Research / Hardware' ? 0.08 : c.status === 'Selected' ? 0.5 : c.companyCandidate ? 0.55 : 0.58;
-  const mat = new THREE.MeshBasicMaterial({ color: new THREE.Color().setHSL(hue, 0.9, c.status === 'Selected' ? 0.7 : 0.55) });
+  const mat = new THREE.MeshBasicMaterial({ color: new THREE.Color().setHSL(hue, 0.95, c.status === 'Selected' ? 0.72 : 0.52) });
   const m = new THREE.Mesh(geo, mat);
   const phi = Math.acos(1 - (2 * (i + 0.5)) / Math.max(concepts.length, 1));
   const theta = Math.PI * (1 + Math.sqrt(5)) * i;
-  const r = 16 + (c.form === 'Standalone Company' ? 2 : 0);
+  const r = 16 + (c.form === 'Standalone Company' ? 2.2 : 0);
   m.position.setFromSphericalCoords(r, phi, theta);
   m.userData = c;
   group.add(m);
 });
-
 const ray = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 canvas.addEventListener('pointerdown', (ev) => {
@@ -187,20 +172,17 @@ canvas.addEventListener('pointerdown', (ev) => {
   const hit = ray.intersectObjects(group.children)[0];
   if (hit) openConcept(hit.object.userData);
 });
-
 function resize() {
-  const w = innerWidth; const h = innerHeight;
-  renderer.setSize(w, h, false);
-  camera.aspect = w / h; camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight, false);
+  camera.aspect = innerWidth / innerHeight;
+  camera.updateProjectionMatrix();
 }
 addEventListener('resize', resize); resize();
-
 let t = 0;
-function frame() {
-  t += 0.0025;
+(function frame() {
+  t += 0.0024;
   group.rotation.y = t;
-  group.rotation.x = Math.sin(t * 0.4) * 0.15;
+  group.rotation.x = Math.sin(t * 0.4) * 0.16;
   renderer.render(scene, camera);
   requestAnimationFrame(frame);
-}
-frame();
+})();
