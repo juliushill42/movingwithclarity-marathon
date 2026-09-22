@@ -29,14 +29,6 @@ function inflate(raw) {
 }
 
 async function loadCatalog() {
-  const el = document.getElementById('catalog-data');
-  if (el && el.textContent.trim()) {
-    try {
-      const packed = JSON.parse(el.textContent);
-      const concepts = inflate(packed);
-      if (concepts.length) return { catalog: packed, concepts };
-    } catch (_) {}
-  }
   const tryFetch = async (urls) => {
     for (const u of urls) {
       try {
@@ -46,19 +38,21 @@ async function loadCatalog() {
     }
     return null;
   };
-  const packed = await tryFetch([
-    './public/catalog.json', '/catalog.json', './catalog.json',
-    './public/concepts.json', '/concepts.json', './concepts.json',
-  ]);
-  let concepts = inflate(packed);
-  if (concepts.length < 193) {
-    const parts = await Promise.all([
-      tryFetch(['./public/catalog.1.json', '/catalog.1.json', './catalog.1.json']),
-      tryFetch(['./public/catalog.2.json', '/catalog.2.json', './catalog.2.json']),
-    ]);
-    concepts = [...inflate(parts[0]), ...inflate(parts[1])];
+  const el = document.getElementById('catalog-data');
+  if (el && el.textContent.trim()) {
+    try {
+      const packed = JSON.parse(el.textContent);
+      const concepts = inflate(packed);
+      if (concepts.length) return { catalog: packed, concepts };
+    } catch (_) {}
   }
-  return { catalog: packed || { concepts }, concepts };
+  const meta = await tryFetch(['./public/catalog.meta.json', '/catalog.meta.json', './catalog.meta.json']);
+  const parts = await Promise.all([1, 2, 3, 4].map((i) =>
+    tryFetch([`./public/rows.${i}.json`, `/rows.${i}.json`, `./rows.${i}.json`])
+  ));
+  const rows = parts.flatMap((p) => (Array.isArray(p) ? p : []));
+  const concepts = (meta && rows.length) ? inflate({ ...meta, rows }) : [];
+  return { catalog: meta || { concepts }, concepts };
 }
 const { concepts } = await loadCatalog();
 
