@@ -8,13 +8,5 @@
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
       ]
     }
-  ],
-  "rewrites": [
-    { "source": "/catalog.meta.json", "destination": "/public/catalog.meta.json" },
-    { "source": "/rows.1.json", "destination": "/public/rows.1.json" },
-    { "source": "/rows.2.json", "destination": "/public/rows.2.json" },
-    { "source": "/rows.3.json", "destination": "/public/rows.3.json" },
-    { "source": "/rows.4.json", "destination": "/public/rows.4.json" },
-    { "source": "/recordings/:file", "destination": "/public/recordings/:file" }
   ]
 }

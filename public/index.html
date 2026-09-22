@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>21-Day Marathon — Moving With Clarity</title>
+  <meta name="description" content="Public review surface for the TitanU Sept 22–Oct 12 2026 concept factory. One operator. 193 specified systems. Secret sauce withheld." />
+  <link rel="stylesheet" href="./src/styles.css" />
+</head>
+<body>
+  <canvas id="void"></canvas>
+  <div id="grain"></div>
+  <header class="top">
+    <div class="brand">
+      <span class="mark">::JH•TUAI::</span>
+      <strong>movingwithclarity.com</strong>
+      <em>21-Day Marathon</em>
+    </div>
+    <nav>
+      <button data-go="constellation">Constellation</button>
+      <button data-go="ledger">Ledger</button>
+      <button data-go="pose">Skill pose</button>
+      <button data-go="ip">IP boundary</button>
+      <button data-go="tape">Tapes</button>
+    </nav>
+    <div class="clock" id="clock">Sep 22 → Oct 12 2026</div>
+  </header>
+  <main>
+    <section id="hero">
+      <p class="kicker">Sept 22 – Oct 12 2026 · 193 specified systems · 1 operator factory</p>
+      <h1>There is no team on this ledger.<br/>That is the point.</h1>
+      <p class="lede">
+        Julius Hill specified 193 products in public language you can audit.
+        A conventional squad would staff this as years of parallel workstreams.
+        The factory is a phone, a prompt, a <code>bootNNN.sh</code>, and a hash.
+        You can review the builds. You cannot have the sauce.
+      </p>
+      <div class="stats" id="stats"></div>
+    </section>
+    <section id="inspector" hidden>
+      <button class="close" id="close">close</button>
+      <p class="urn" id="urn"></p>
+      <h2 id="iname"></h2>
+      <p class="why" id="iwhy"></p>
+      <div class="grid2">
+        <article><h3>What this is</h3><p id="iform"></p><p id="istatus"></p></article>
+        <article><h3>Why it exists</h3><p id="iwhy2"></p></article>
+        <article><h3>Team of engineers (planning)</h3><p id="iteam"></p></article>
+        <article><h3>Solo factory (planning)</h3><p id="isolo"></p></article>
+      </div>
+      <div class="ipbox">
+        <div><b>Public / reviewable</b><span id="ipub"></span></div>
+        <div><b>Withheld</b><span id="ipriv"></span></div>
+        <div><b>Patent gate</b><span id="igate"></span></div>
+      </div>
+      <div class="tape" id="tapeSlot">
+        <p class="muted">Drop screen recording as <code id="tpath"></code> — FFmpeg webm. No tape yet is not a fail; it is an empty slot.</p>
+        <video id="tape" controls playsinline hidden></video>
+      </div>
+    </section>
+    <section id="ledger" class="panel" hidden>
+      <header><h2>Concept ledger</h2><input id="q" placeholder="filter name, id, form…" /></header>
+      <div class="tablewrap"><table><thead><tr><th>ID</th><th>Name</th><th>Form</th><th>Status</th><th>Gate</th><th>Team</th><th>Solo factory</th></tr></thead><tbody id="rows"></tbody></table></div>
+    </section>
+    <section id="pose" class="panel" hidden>
+      <h2>Skill pose</h2>
+      <p class="muted">Not a résumé. The rings the factory actually uses.</p>
+      <div class="rings">
+        <div><h3>Operator</h3><p>Termux · Android ARM64 · one-prompt heredoc · ju-fleet three-phone board</p></div>
+        <div><h3>Languages</h3><p>Rust · Go · Zig · Python · TypeScript · Kotlin · C/C++</p></div>
+        <div><h3>Runtime</h3><p>WASM · WebGPU · Three.js · vanilla JS · Svelte when a human surface needs it</p></div>
+        <div><h3>Media</h3><p>FFmpeg · HLS/CMAF · Whisper-class STT · deterministic transcode</p></div>
+        <div><h3>Proof</h3><p>SHA-256 · provenance.json · TRADE_SECRET_BOUNDARY · clone→verify</p></div>
+        <div><h3>Continuity</h3><p>Titan owns memory. LLM is a tool. Drive handoff after every hardened build.</p></div>
+      </div>
+    </section>
+    <section id="ip" class="panel" hidden>
+      <h2>IP boundary</h2>
+      <ul class="rules">
+        <li>Invention drafts exist in a private vault. <b>None filed. None publicly disclosed.</b></li>
+        <li>Correct words: draft provisional · invention disclosure · trade secret · hold.</li>
+        <li>Wrong words: patented · USPTO-filed · JCH-2026 granted.</li>
+        <li>T21-174–193 are labeled reconstructed completions, not “always had 193 verbatim.”</li>
+        <li>Public repo may include runnable interface, product-level architecture, tests, hashes, demo tape.</li>
+        <li>Public repo may not include credentials, private family content, unreleased heuristics, scoring weights, held claim detail.</li>
+        <li>A preview URL is not Build Verified. Selected ≠ Done.</li>
+      </ul>
+    </section>
+    <section id="tape" class="panel" hidden>
+      <h2>Build tapes</h2>
+      <p>Encode on-device or desktop, then drop into <code>public/recordings/</code>:</p>
+      <pre>ffmpeg -i capture.mov -c:v libvpx-vp9 -crf 32 -b:v 0 -c:a libopus recordings/T21-001.webm</pre>
+      <div id="tapes" class="tapes"></div>
+    </section>
+  </main>
+  <footer>Julius Hill / Titan Universal AI LLC · origin marker ::JH•TUAI:: · titanuai.com · github.com/juliushill42</footer>
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js"}}</script>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
