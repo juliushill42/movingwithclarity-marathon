@@ -3,13 +3,10 @@ import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { useFactory } from "@/lib/store";
 import { loadCatalog } from "@/lib/catalog";
-import { bootTick } from "@/lib/audio";
 import { InterfaceOverlay } from "./InterfaceOverlay";
 import { SceneBoundary } from "./SceneBoundary";
 
 const FactoryScene = dynamic(() => import("./FactoryScene").then((m) => m.FactoryScene), { ssr: false });
-
-const LINES = ["MWC / GODMODE", "OPERATOR ENTITY ONLINE", "CATALOG 193  LOCKED", "PATENTS FILED  0", "CAMERA DIRECTOR READY", "FLOOR OPEN"];
 
 export function FactoryExperience() {
   const setBooted = useFactory((s) => s.setBooted);
@@ -19,8 +16,6 @@ export function FactoryExperience() {
   const webgl = useFactory((s) => s.webgl);
   const reduced = useFactory((s) => s.reduced);
   const mobile = useFactory((s) => s.mobile);
-  const [line, setLine] = useState(0);
-  const [ready3d, setReady3d] = useState(false);
 
   useEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -33,48 +28,21 @@ export function FactoryExperience() {
       gl = false;
     }
     setFlags({ reduced: reducedMotion, mobile: mobileView, webgl: gl });
+    setBooted(true);
     loadCatalog().then(setConcepts).catch(() => setConcepts([]));
-    if (reducedMotion) {
-      setBooted(true);
-      return;
-    }
-    let i = 0;
-    const id = window.setInterval(() => {
-      try {
-        bootTick(i);
-      } catch {
-        /* ignore */
-      }
-      i += 1;
-      setLine(i);
-      if (i >= LINES.length) {
-        window.clearInterval(id);
-        setBooted(true);
-      }
-    }, 220);
-    return () => window.clearInterval(id);
   }, [setBooted, setFlags, setConcepts]);
 
-  useEffect(() => {
-    if (!booted) return;
-    const t = window.setTimeout(() => setReady3d(true), 80);
-    return () => window.clearTimeout(t);
-  }, [booted]);
+  const show3d = booted && webgl && !reduced && !mobile;
 
   return (
     <>
       <div className="poster" aria-hidden />
-      {!booted && (
-        <div className="boot" role="status">
-          <pre>{LINES.slice(0, line).map((l) => `> ${l}`).join("\n")}</pre>
-        </div>
-      )}
-      {booted && ready3d && webgl && !reduced && (
+      {show3d && (
         <SceneBoundary>
-          <FactoryScene follow={!mobile} />
+          <FactoryScene follow />
         </SceneBoundary>
       )}
-      {booted && <InterfaceOverlay />}
+      <InterfaceOverlay />
     </>
   );
 }

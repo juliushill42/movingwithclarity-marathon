@@ -3,17 +3,15 @@ import Link from "next/link";
 
 export default function Error({ reset }: { error: Error; reset: () => void }) {
   return (
-    <main className="page" style={{ fontFamily: "ui-monospace, monospace", padding: 24 }}>
+    <main className="page">
       <p className="mark">MOVING WITH CLARITY</p>
-      <h1>Floor fault.</h1>
-      <p>The 3D layer failed on this device. The ledger still works.</p>
+      <h1>This page hit a snag.</h1>
+      <p>The list of 193 systems still works.</p>
       <p>
-        <Link href="/ledger">Open the 193-system ledger</Link>
-        {" · "}
-        <Link href="/godmode">/godmode</Link>
+        <Link href="/ledger">Open the list</Link>
         {" · "}
         <button type="button" onClick={() => reset()}>
-          retry floor
+          Try again
         </button>
       </p>
     </main>

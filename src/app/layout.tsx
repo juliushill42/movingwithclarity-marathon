@@ -6,8 +6,8 @@ const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Moving With Clarity — Factory",
-  description: "Public review surface for a 21-day solo software factory. 193 specified systems. Builds reviewable. Sauce withheld.",
+  title: "Moving With Clarity — 193 systems in 21 days",
+  description: "One person writing and building 193 systems in public. Sep 22 to Oct 12, 2026.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
