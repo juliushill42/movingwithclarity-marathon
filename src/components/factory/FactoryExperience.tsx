@@ -5,10 +5,11 @@ import { useFactory } from "@/lib/store";
 import { loadCatalog } from "@/lib/catalog";
 import { bootTick } from "@/lib/audio";
 import { InterfaceOverlay } from "./InterfaceOverlay";
+import { SceneBoundary } from "./SceneBoundary";
 
 const FactoryScene = dynamic(() => import("./FactoryScene").then((m) => m.FactoryScene), { ssr: false });
 
-const LINES = ["MWC / GODMODE","OPERATOR ENTITY ONLINE","CATALOG 193  LOCKED","PATENTS FILED  0","CAMERA DIRECTOR READY","FLOOR OPEN"];
+const LINES = ["MWC / GODMODE", "OPERATOR ENTITY ONLINE", "CATALOG 193  LOCKED", "PATENTS FILED  0", "CAMERA DIRECTOR READY", "FLOOR OPEN"];
 
 export function FactoryExperience() {
   const setBooted = useFactory((s) => s.setBooted);
@@ -28,14 +29,28 @@ export function FactoryExperience() {
     try {
       const c = document.createElement("canvas");
       gl = !!(c.getContext("webgl2") || c.getContext("webgl"));
-    } catch { gl = false; }
+    } catch {
+      gl = false;
+    }
     setFlags({ reduced: reducedMotion, mobile: mobileView, webgl: gl });
     loadCatalog().then(setConcepts).catch(() => setConcepts([]));
-    if (reducedMotion) { setBooted(true); return; }
+    if (reducedMotion) {
+      setBooted(true);
+      return;
+    }
     let i = 0;
     const id = window.setInterval(() => {
-      bootTick(i); i += 1; setLine(i);
-      if (i >= LINES.length) { window.clearInterval(id); setBooted(true); }
+      try {
+        bootTick(i);
+      } catch {
+        /* ignore */
+      }
+      i += 1;
+      setLine(i);
+      if (i >= LINES.length) {
+        window.clearInterval(id);
+        setBooted(true);
+      }
     }, 220);
     return () => window.clearInterval(id);
   }, [setBooted, setFlags, setConcepts]);
@@ -49,8 +64,16 @@ export function FactoryExperience() {
   return (
     <>
       <div className="poster" aria-hidden />
-      {!booted && <div className="boot" role="status"><pre>{LINES.slice(0, line).map((l) => `> ${l}`).join("\n")}</pre></div>}
-      {booted && ready3d && webgl && !reduced && <FactoryScene follow={!mobile} />}
+      {!booted && (
+        <div className="boot" role="status">
+          <pre>{LINES.slice(0, line).map((l) => `> ${l}`).join("\n")}</pre>
+        </div>
+      )}
+      {booted && ready3d && webgl && !reduced && (
+        <SceneBoundary>
+          <FactoryScene follow={!mobile} />
+        </SceneBoundary>
+      )}
       {booted && <InterfaceOverlay />}
     </>
   );
