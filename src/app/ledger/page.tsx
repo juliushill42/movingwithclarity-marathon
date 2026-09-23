@@ -22,10 +22,10 @@ export default function LedgerPage() {
         <p className="mark">MOVING WITH CLARITY</p>
         <h1>The 193 systems</h1>
         <p className="muted">
-          Day {dayOfRun()} of 21. One person. These times are planning guesses, not measured hours.
+          Day {dayOfRun()} of 21. September 22 to October 12, 2026. One person. Times are planning guesses.
         </p>
         <p>
-          <Link href="/">Home</Link>
+          <Link href="/">Home</Link> · <Link href="/schedule">Schedule</Link>
         </p>
         <input
           value={q}

@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useFactory } from "@/lib/store";
 import { dayOfRun } from "@/lib/catalog";
+import { todayPlan } from "@/lib/schedule";
 
 export function InterfaceOverlay() {
   const world = useFactory((s) => s.world);
@@ -12,6 +13,7 @@ export function InterfaceOverlay() {
   const query = useFactory((s) => s.query);
   const setQuery = useFactory((s) => s.setQuery);
   const day = dayOfRun();
+  const today = todayPlan();
   const list = concepts.filter((c) => {
     const q = query.trim().toLowerCase();
     return !q || `${c.id} ${c.name} ${c.why} ${c.form} ${c.status}`.toLowerCase().includes(q);
@@ -24,7 +26,7 @@ export function InterfaceOverlay() {
         <div>
           <div className="mark">MOVING WITH CLARITY</div>
           <div className="muted" style={{ fontSize: 12, marginTop: 4 }}>
-            Day {day} of 21 · one person building in public
+            Day {day} of 21 · Sep 22 – Oct 12, 2026 · one person, in public
           </div>
         </div>
         <nav>
@@ -34,6 +36,7 @@ export function InterfaceOverlay() {
           <button className={world === "ledger" ? "on" : ""} onClick={() => setWorld("ledger")}>
             The 193 systems
           </button>
+          <Link href="/schedule">Schedule</Link>
           <Link href="/ledger">Full list</Link>
         </nav>
       </header>
@@ -42,8 +45,11 @@ export function InterfaceOverlay() {
         <div className="legend">
           <h1>One person. 193 systems. 21 days.</h1>
           <p>
-            This is a public build log. Each item is a product idea written so you can see
-            <b> what it is</b> and <b> why it exists</b>. Time notes are planning guesses, not a stopwatch.
+            A public build log. Each item says what it is and why it exists. Time notes are planning
+            guesses, not a stopwatch.
+          </p>
+          <p className="muted" style={{ marginTop: 8 }}>
+            Today — Day {today.day}, {today.date}: {today.label}. {today.focus}
           </p>
         </div>
         <div className="statrow" style={{ minWidth: 260 }}>
@@ -63,7 +69,7 @@ export function InterfaceOverlay() {
         <aside className="panel" aria-live="polite">
           <p className="meta">The list</p>
           <h2>What is being built</h2>
-          <p>Tap a row. You get the idea in plain language, plus a team-vs-one-person time guess.</p>
+          <p>Tap a row for the idea in plain language, plus a team-vs-one-person time guess.</p>
           <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search by name…" />
           {selected && (
             <article>
@@ -71,8 +77,8 @@ export function InterfaceOverlay() {
               <h3>{selected.name}</h3>
               <p>{selected.why}</p>
               <p className="muted">
-                Kind: {selected.form}. Status: {selected.status}.
-                Team guess: {selected.estimate.team}. One person: {selected.estimate.soloFactory}.
+                Kind: {selected.form}. Status: {selected.status}. Team guess: {selected.estimate.team}. One
+                person: {selected.estimate.soloFactory}.
               </p>
               <p className="muted">{selected.estimate.label}</p>
             </article>
