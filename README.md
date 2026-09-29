@@ -1,5 +1,16 @@
 # Moving With Clarity — 21-Day Marathon
 
+## Product clarity catalog
+
+`/portfolio` presents 116 active build records transcribed from the September 28,
+2026 **WHAT I BUILT — PRODUCT CLARITY CATALOG** PDF. The page explains each
+build's intended function and purpose. Twenty-three private `marathon-t21-NNN`
+source repositories are linked where the separate repository push was confirmed.
+Those repos contain the original build script, not an installed product. The
+PDF's as-is and ceiling figures are labeled as author estimates, never verified
+valuations. The 143-build-in-seven-days figure is the founder's reported
+marathon milestone; the 116 records and 193 concepts are different sets.
+
 Public review surface for the September 22–October 12, 2026 TitanU build run.
 
 The site separates what is written down, what is selected to build, and what is actually finished. A selected item is not presented as completed work.

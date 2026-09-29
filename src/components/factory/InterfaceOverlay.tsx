@@ -38,16 +38,18 @@ export function InterfaceOverlay() {
           </button>
           <Link href="/schedule">Schedule</Link>
           <Link href="/ledger">Full list</Link>
+          <Link href="/portfolio">What I built</Link>
         </nav>
       </header>
 
       <div className="dock">
         <div className="legend">
-          <h1>One person. 193 systems. 21 days.</h1>
+          <h1>143 builds in 7 days.</h1>
           <p>
-            A public build log. Each item says what it is and why it exists. Time notes are planning
-            guesses, not a stopwatch.
+            The 21-day target was 143 builds. Explore the 116 active records in the product clarity catalog,
+            or the larger 193-concept plan.
           </p>
+          <p><Link href="/portfolio">Explore what I built →</Link></p>
           <p className="muted" style={{ marginTop: 8 }}>
             Today — Day {today.day}, {today.date}: {today.label}. {today.focus}
           </p>
