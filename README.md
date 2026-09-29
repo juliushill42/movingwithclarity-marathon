@@ -151,3 +151,11 @@ Patents: none filed.
 
 Owner: Julius Cameron Hill / Titan Universal AI LLC  
 Watermark: `":"`
+
+## Interactive homepage
+
+The homepage now opens on the 116-node build map and a selected build dossier.
+The previous 3D marathon view remains at `/marathon`. `/portfolio` is an alias
+for the same explorer so links already published in build READMEs keep working.
+The map, filters, search, repository links, and PDF estimate toggle use the
+September 28 catalog and the 62 exact repo matches published with it.
