@@ -666,64 +666,85 @@
       "id": "T21-081",
       "linked_repo": "https://github.com/juliushill42/t21-081-adaptive-micro-credit-scorer",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
-      "verification_path": null,
-      "runtime_proven": false
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
+      "verification_path": "VERIFICATION.md",
+      "runtime_proven": false,
+      "source_tree": "ff165450b9494bd6808f79ed001fbeed3894c98d",
+      "source_file_count": 4,
+      "inspection_note": "Repository file tree confirmed; runtime not verified."
     },
     {
       "id": "T21-082",
       "linked_repo": "https://github.com/juliushill42/marathon-t21-082",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
       "verification_path": null,
-      "runtime_proven": false
+      "runtime_proven": false,
+      "source_tree": "da7e6653969cfa93ea6c208665bd01a6474f17f8",
+      "source_file_count": 2,
+      "inspection_note": "Repository file tree confirmed; runtime not verified."
     },
     {
       "id": "T21-083",
       "linked_repo": "https://github.com/juliushill42/marathon-t21-083",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
       "verification_path": null,
-      "runtime_proven": false
+      "runtime_proven": false,
+      "source_tree": "8503d1e82f75da3d32e7faabdbc33681dd944a60",
+      "source_file_count": 2,
+      "inspection_note": "Repository file tree confirmed; runtime not verified."
     },
     {
       "id": "T21-084",
       "linked_repo": "https://github.com/juliushill42/marathon-t21-084",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
       "verification_path": null,
-      "runtime_proven": false
+      "runtime_proven": false,
+      "source_tree": "66122a88571bd9910a3730dd4977f5e1dde602da",
+      "source_file_count": 2,
+      "inspection_note": "Repository file tree confirmed; runtime not verified."
     },
     {
       "id": "T21-085",
       "linked_repo": "https://github.com/juliushill42/marathon-t21-085",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
       "verification_path": null,
-      "runtime_proven": false
+      "runtime_proven": false,
+      "source_tree": "aaf7e354c1adb3bbe7b2dd1ae940121acbe55dc4",
+      "source_file_count": 2,
+      "inspection_note": "Repository file tree confirmed; runtime not verified."
     },
     {
       "id": "T21-086",
       "linked_repo": "https://github.com/juliushill42/marathon-t21-086",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
       "verification_path": null,
-      "runtime_proven": false
+      "runtime_proven": false,
+      "source_tree": "976dd7c682c050c91c853c3f9d1c9195558e62a7",
+      "source_file_count": 2,
+      "inspection_note": "Repository file tree confirmed; runtime not verified."
     },
     {
       "id": "T21-087",
       "linked_repo": "https://github.com/juliushill42/t21-087-shadow-ai-connector-inventory-and-risk-scorer",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
-      "verification_path": null,
-      "runtime_proven": false
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
+      "verification_path": "VERIFICATION.md",
+      "runtime_proven": false,
+      "source_tree": "f3811be36505aef0bc56b237d4f4a61240ff3c88",
+      "source_file_count": 4,
+      "inspection_note": "Repository file tree confirmed; runtime not verified."
     },
     {
       "id": "T21-088",
@@ -738,19 +759,25 @@
       "id": "T21-089",
       "linked_repo": "https://github.com/juliushill42/marathon-t21-089",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
       "verification_path": null,
-      "runtime_proven": false
+      "runtime_proven": false,
+      "source_tree": "e162280dd2c01a1eb919f51203130abfbe2c4646",
+      "source_file_count": 2,
+      "inspection_note": "Repository file tree confirmed; runtime not verified."
     },
     {
       "id": "T21-090",
       "linked_repo": "https://github.com/juliushill42/t21-090-eol-exposure-shadow-runtime",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
-      "verification_path": null,
-      "runtime_proven": false
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
+      "verification_path": "VERIFICATION.md",
+      "runtime_proven": false,
+      "source_tree": "9acac513eb29bda7d98b374b6653584bf29bbdd0",
+      "source_file_count": 4,
+      "inspection_note": "Repository file tree confirmed; runtime not verified."
     },
     {
       "id": "T21-091",
