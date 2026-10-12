@@ -15,19 +15,25 @@
       "id": "T21-001",
       "linked_repo": "https://github.com/juliushill42/marathon-t21-001",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
       "verification_path": null,
-      "runtime_proven": false
+      "runtime_proven": false,
+      "source_tree": "d823d59662a0ac25145b711f7ffeb49421e6def7",
+      "source_file_count": 2,
+      "inspection_note": "Source present; product runtime not verified."
     },
     {
       "id": "T21-002",
       "linked_repo": "https://github.com/juliushill42/marathon-t21-002",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
       "verification_path": null,
-      "runtime_proven": false
+      "runtime_proven": false,
+      "source_tree": "3debb50f10afa7d8a7bcf06bd8aa8414a7949e9c",
+      "source_file_count": 2,
+      "inspection_note": "Source present; product runtime not verified."
     },
     {
       "id": "T21-003",
@@ -1002,10 +1008,13 @@
       "id": "T21-169",
       "linked_repo": "https://github.com/juliushill42/t21-169-micro-saas-domain-farm",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
-      "verification_path": null,
-      "runtime_proven": false
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
+      "verification_path": "VERIFICATION.md",
+      "runtime_proven": false,
+      "source_tree": "f5afae2fc3b139344bc7cafa128e7e078b200518",
+      "source_file_count": 4,
+      "inspection_note": "Source present; product runtime not verified."
     },
     {
       "id": "T21-170",
@@ -1020,10 +1029,13 @@
       "id": "T21-171",
       "linked_repo": "https://github.com/juliushill42/t21-171-toolfuzz-mcp-protocol-fuzzer",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
-      "verification_path": null,
-      "runtime_proven": false
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
+      "verification_path": "VERIFICATION.md",
+      "runtime_proven": false,
+      "source_tree": "c5d39459c708099a20f18ed1351ccf19360e48aa",
+      "source_file_count": 4,
+      "inspection_note": "Source present; product runtime not verified."
     },
     {
       "id": "T21-172",
