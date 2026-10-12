@@ -180,55 +180,73 @@
       "id": "T21-022",
       "linked_repo": "https://github.com/juliushill42/t21-022-cross-vendor-agent-interop-bus",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
-      "verification_path": null,
-      "runtime_proven": false
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
+      "verification_path": "VERIFICATION.md",
+      "runtime_proven": false,
+      "source_tree": "9d35edbb6426f7127a53bbbf4dd33cc17bf7fc30",
+      "source_file_count": 4,
+      "inspection_note": "Repository file tree confirmed; runtime not verified."
     },
     {
       "id": "T21-027",
       "linked_repo": "https://github.com/juliushill42/t21-027-dialect-faithful-transcription",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
-      "verification_path": null,
-      "runtime_proven": false
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
+      "verification_path": "VERIFICATION.md",
+      "runtime_proven": false,
+      "source_tree": "b06d7938bc52176683c54d4ad7f6a9e3cf0fca46",
+      "source_file_count": 4,
+      "inspection_note": "Repository file tree confirmed; runtime not verified."
     },
     {
       "id": "T21-028",
       "linked_repo": "https://github.com/juliushill42/t21-028-camera-firmware-provenance-signing",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
-      "verification_path": null,
-      "runtime_proven": false
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
+      "verification_path": "VERIFICATION.md",
+      "runtime_proven": false,
+      "source_tree": "a93da9a59928d48798c864a14e8392d39938f59c",
+      "source_file_count": 4,
+      "inspection_note": "Repository file tree confirmed; runtime not verified."
     },
     {
       "id": "T21-029",
       "linked_repo": "https://github.com/juliushill42/t21-029-remittance-verification-for-diaspora-transfers",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
-      "verification_path": null,
-      "runtime_proven": false
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
+      "verification_path": "VERIFICATION.md",
+      "runtime_proven": false,
+      "source_tree": "4a3b2ccb8c231a817d8cad3986a964ac848252f9",
+      "source_file_count": 4,
+      "inspection_note": "Repository file tree confirmed; runtime not verified."
     },
     {
       "id": "T21-032",
       "linked_repo": "https://github.com/juliushill42/marathon-t21-032",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
       "verification_path": null,
-      "runtime_proven": false
+      "runtime_proven": false,
+      "source_tree": "d3eba2efd5521c2626f9ddf150755df690d39d7c",
+      "source_file_count": 2,
+      "inspection_note": "Repository file tree confirmed; runtime not verified."
     },
     {
       "id": "T21-033",
       "linked_repo": "https://github.com/juliushill42/marathon-t21-033",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
       "verification_path": null,
-      "runtime_proven": false
+      "runtime_proven": false,
+      "source_tree": "1923e7090bb5913ae163b514bbc5b7adc2898f80",
+      "source_file_count": 2,
+      "inspection_note": "Repository file tree confirmed; runtime not verified."
     },
     {
       "id": "T21-034",
@@ -243,28 +261,37 @@
       "id": "T21-037",
       "linked_repo": "https://github.com/juliushill42/marathon-t21-037",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
       "verification_path": null,
-      "runtime_proven": false
+      "runtime_proven": false,
+      "source_tree": "ef487395f80191a53f70a3680e0d93b061c3a1c5",
+      "source_file_count": 2,
+      "inspection_note": "Repository file tree confirmed; runtime not verified."
     },
     {
       "id": "T21-038",
       "linked_repo": "https://github.com/juliushill42/marathon-t21-038",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
       "verification_path": null,
-      "runtime_proven": false
+      "runtime_proven": false,
+      "source_tree": "9f60cc82b483b9231b75e02c247e2383f227ca53",
+      "source_file_count": 2,
+      "inspection_note": "Repository file tree confirmed; runtime not verified."
     },
     {
       "id": "T21-039",
       "linked_repo": "https://github.com/juliushill42/marathon-t21-039",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
       "verification_path": null,
-      "runtime_proven": false
+      "runtime_proven": false,
+      "source_tree": "20c97240acb96d1d3ebcb4073d1062c5966ad352",
+      "source_file_count": 2,
+      "inspection_note": "Repository file tree confirmed; runtime not verified."
     },
     {
       "id": "T21-040",
