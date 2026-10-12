@@ -35,7 +35,7 @@ function label(p?: Proof) {
   if (!p?.linked_repo) return "No source link";
   if (!p.source_inspected) return "Linked; not inspected";
   if (p.inspection_note?.includes("not reproducible")) return "Launcher incomplete";
-  return "Source inspected";
+  return "Source tree checked";
 }
 
 export default function EvidencePage() {
@@ -64,7 +64,7 @@ export default function EvidencePage() {
         {[
           ["Catalog entries", rows.length],
           ["Source links", sourcesLinked],
-          ["Source inspected", sourceInspected],
+          ["Source trees checked", sourceInspected],
           ["Runtime proven here", runnableProven],
         ].map(([title, value]) => (
           <div key={title} style={panel}><div style={{ fontSize: "32px", fontWeight: 750 }}>{value}</div><div style={subtle}>{title}</div></div>
@@ -100,6 +100,8 @@ export default function EvidencePage() {
               <td style={td}><Link href={"/portfolio#" + build.id} style={link}>{build.id}</Link><div style={{ fontWeight: 700, marginTop: "3px" }}>{build.name}</div><div style={subtle}>{build.does}</div></td>
               <td style={td}>
                 <strong>{label(proof)}</strong>
+                {proof?.linked_repo && <div style={{ ...subtle, fontFamily: "monospace", overflowWrap: "anywhere" }}>{proof.linked_repo.split("/").pop()}</div>}
+                {proof?.source_tree && <div style={{ ...subtle, fontFamily: "monospace" }}>Tree: {proof.source_tree.slice(0, 12)}</div>}
                 <div style={subtle}>
                   {!proof?.linked_repo ? "No repository mapped in the catalog." :
                    proof.link_access === "public" && proof.source_inspected ?
