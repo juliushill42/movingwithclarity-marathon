@@ -159,3 +159,26 @@ The previous 3D marathon view remains at `/marathon`. `/portfolio` is an alias
 for the same explorer so links already published in build READMEs keep working.
 The map, filters, search, repository links, and PDF estimate toggle use the
 September 28 catalog and the 62 exact repo matches published with it.
+
+
+## Evidence index and machine-readable receipts
+
+- Human-readable: https://movingwithclarity.com/evidence
+- JSON API: https://movingwithclarity.com/api/evidence
+- All 116 catalog records have evidence rows with direct anchors.
+- All 62 catalog-linked GitHub repositories were checked through the connected GitHub account, fingerprinted using exact Git tree hashes, and examined for launcher and verification-document file presence.
+- 54 catalog records remain without exact source links; no source names were guessed.
+- File inventory: 62 launch scripts, 39 verification documents. Those files do not establish that code runs.
+- Zero products are marked independently runtime-verified in this snapshot.
+- npm run test:evidence validates records, source integrity metadata and runtime-proof gating.
+- npm run build includes the evidence tests through prebuild.
+- Public JSON omits private repository URLs and source contents.
+
+### RHEA / JujuLabz
+
+RHEA is the harness. Its designated home is https://jujulabz.com.
+Published orchestration source: https://github.com/juliushill42/rheasytemtar2-26
+
+At inspection, the domain mapped in Vercel to the existing voice-and-vision project, rather than a verified RHEA runtime. The existing domain deployment was not overwritten.
+
+A source link, a launcher file, a verification report, a product runtime and a commercial outcome represent different evidence levels.
