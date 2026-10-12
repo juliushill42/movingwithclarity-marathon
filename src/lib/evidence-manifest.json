@@ -1050,10 +1050,13 @@
       "id": "T21-150",
       "linked_repo": "https://github.com/juliushill42/t21-150-wardenwasm-wasi-agent-sandbox",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
-      "verification_path": null,
-      "runtime_proven": false
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
+      "verification_path": "VERIFICATION.md",
+      "runtime_proven": false,
+      "source_tree": "e087a2f28dee33215cb1875cd657d1b77da34cfe",
+      "source_file_count": 4,
+      "inspection_note": "Repository file tree confirmed; runtime not verified."
     },
     {
       "id": "T21-151",
@@ -1131,10 +1134,13 @@
       "id": "T21-165",
       "linked_repo": "https://github.com/juliushill42/t21-165-domain-leasing-licensing",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
-      "verification_path": null,
-      "runtime_proven": false
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
+      "verification_path": "VERIFICATION.md",
+      "runtime_proven": false,
+      "source_tree": "f915bf0af66b30480eb848796732fc9647f7e35b",
+      "source_file_count": 4,
+      "inspection_note": "Repository file tree confirmed; runtime not verified."
     },
     {
       "id": "T21-166",
@@ -1149,19 +1155,25 @@
       "id": "T21-167",
       "linked_repo": "https://github.com/juliushill42/t21-167-coldstart-edge-model-loader",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
-      "verification_path": null,
-      "runtime_proven": false
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
+      "verification_path": "VERIFICATION.md",
+      "runtime_proven": false,
+      "source_tree": "5c06fde87ebb4a9efd64468a83c4753f6300c003",
+      "source_file_count": 5,
+      "inspection_note": "Repository file tree confirmed; runtime not verified."
     },
     {
       "id": "T21-168",
       "linked_repo": "https://github.com/juliushill42/t21-168-autonomous-civic-mesh-internet",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
-      "verification_path": null,
-      "runtime_proven": false
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
+      "verification_path": "VERIFICATION.md",
+      "runtime_proven": false,
+      "source_tree": "66f188bb98ada48f3da7d9bb654d1a429680a95d",
+      "source_file_count": 4,
+      "inspection_note": "Repository file tree confirmed; runtime not verified."
     },
     {
       "id": "T21-169",
