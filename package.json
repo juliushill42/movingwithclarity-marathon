@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test:evidence": "node --test tests/evidence.test.mjs",
+    "prebuild": "npm run test:evidence"
   },
   "dependencies": {
     "@react-three/drei": "9.121.4",
