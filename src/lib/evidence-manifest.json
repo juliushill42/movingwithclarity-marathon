@@ -672,10 +672,13 @@
       "id": "T21-094",
       "linked_repo": "https://github.com/juliushill42/marathon-t21-094",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
       "verification_path": null,
-      "runtime_proven": false
+      "runtime_proven": false,
+      "source_tree": "7931bf975c5ec5109111a0cf8909d6d06f35251a",
+      "source_file_count": 2,
+      "inspection_note": "Source files confirmed in GitHub; runtime not verified."
     },
     {
       "id": "T21-095",
@@ -726,10 +729,13 @@
       "id": "T21-100",
       "linked_repo": "https://github.com/juliushill42/marathon-t21-100",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
       "verification_path": null,
-      "runtime_proven": false
+      "runtime_proven": false,
+      "source_tree": "718d2aff508ccb1482ff46174a11a7f14320c341",
+      "source_file_count": 2,
+      "inspection_note": "Source files confirmed in GitHub; runtime not verified."
     },
     {
       "id": "T21-102",
@@ -1023,10 +1029,13 @@
       "id": "T21-172",
       "linked_repo": "https://github.com/juliushill42/t21-172-sovereign-agent-runtime",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
-      "verification_path": null,
-      "runtime_proven": false
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
+      "verification_path": "VERIFICATION.md",
+      "runtime_proven": false,
+      "source_tree": "16bed9f0873d4199616ceed2a6a85a9a24427a91",
+      "source_file_count": 4,
+      "inspection_note": "Launcher references .one_prompt_parts, which are missing from this repository; not reproducible from this checkout."
     },
     {
       "id": "T21-173",
