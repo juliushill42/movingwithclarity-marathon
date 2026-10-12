@@ -75,19 +75,27 @@
       "id": "T21-007",
       "linked_repo": "https://github.com/juliushill42/t21-007-dataset-lineage-chain",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
-      "verification_path": null,
-      "runtime_proven": false
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
+      "verification_path": "VERIFICATION.md",
+      "runtime_proven": false,
+      "access": "private",
+      "source_tree": "8a69cd561ff5d81d80988da7927c8bf268cf540a",
+      "source_file_count": 4,
+      "inspection_note": "Repository and file tree confirmed; product execution not verified."
     },
     {
       "id": "T21-008",
       "linked_repo": "https://github.com/juliushill42/marathon-t21-008",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
       "verification_path": null,
-      "runtime_proven": false
+      "runtime_proven": false,
+      "access": "private",
+      "source_tree": "da9c4347be45e75cb9032740a549acecfba74c1d",
+      "source_file_count": 2,
+      "inspection_note": "Repository and file tree confirmed; product execution not verified."
     },
     {
       "id": "T21-010",
@@ -111,37 +119,53 @@
       "id": "T21-014",
       "linked_repo": "https://github.com/juliushill42/marathon-t21-014",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
       "verification_path": null,
-      "runtime_proven": false
+      "runtime_proven": false,
+      "access": "private",
+      "source_tree": "c9d4b5c7145ed3ff6b79b1abbd95ebecf6c974d4",
+      "source_file_count": 2,
+      "inspection_note": "Repository and file tree confirmed; product execution not verified."
     },
     {
       "id": "T21-015",
       "linked_repo": "https://github.com/juliushill42/t21-015-verified-model-provenance-marketplace",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
-      "verification_path": null,
-      "runtime_proven": false
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
+      "verification_path": "VERIFICATION.md",
+      "runtime_proven": false,
+      "access": "private",
+      "source_tree": "50d3c4aa358da144f018cb93e9e49438cbcc2ccc",
+      "source_file_count": 4,
+      "inspection_note": "Repository and file tree confirmed; product execution not verified."
     },
     {
       "id": "T21-019",
       "linked_repo": "https://github.com/juliushill42/t21-019-auto-generated-model-nutrition-labels",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
-      "verification_path": null,
-      "runtime_proven": false
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
+      "verification_path": "VERIFICATION.md",
+      "runtime_proven": false,
+      "access": "private",
+      "source_tree": "adc46530e308f06375b5f5afdf4f1ff3ea4f8520",
+      "source_file_count": 4,
+      "inspection_note": "Repository and file tree confirmed; product execution not verified."
     },
     {
       "id": "T21-020",
       "linked_repo": "https://github.com/juliushill42/t21-020-reproducibility-pinning-service",
       "link_access": "private",
-      "source_inspected": false,
-      "bootstrap_path": null,
-      "verification_path": null,
-      "runtime_proven": false
+      "source_inspected": true,
+      "bootstrap_path": "ONE_PROMPT_HEREDOC.sh",
+      "verification_path": "VERIFICATION.md",
+      "runtime_proven": false,
+      "access": "private",
+      "source_tree": "ad0bbeb19a6ecddacdadf468a6f9bf747338689b",
+      "source_file_count": 4,
+      "inspection_note": "Repository and file tree confirmed; product execution not verified."
     },
     {
       "id": "T21-021",
